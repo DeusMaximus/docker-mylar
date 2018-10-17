@@ -15,7 +15,11 @@ RUN \
 	requests \
 	tzlocal && \
  echo "**** install app ****" && \
- git clone --depth 1 https://github.com/evilhero/mylar.git /app/mylar && \
+ git clone https://github.com/evilhero/mylar.git /app/mylar && \
+
+ git --git-dir=/app/mylar/.git --work-tree=/app/mylar checkout development && \
+
+ git -C /app/mylar pull && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/root/.cache \
